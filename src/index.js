@@ -4,13 +4,27 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+
+const config = {
+	initialColorMode: "light",
+	useSystemColorMode: true,
+}
+
+const theme = extendTheme({ config })
 
 ReactDOM.render(
-  <StrictMode>
-    <ColorModeScript />
-    <App />
-  </StrictMode>,
-  document.getElementById('root')
+	<StrictMode>
+		<ChakraProvider theme={theme}>
+			<Router>
+				<ColorModeScript />
+				<App />
+			</Router>
+		</ChakraProvider>
+	</StrictMode>,
+	document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
